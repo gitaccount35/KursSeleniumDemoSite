@@ -21,6 +21,15 @@ public class SignUpPage {
     @FindBy(name="register")
     WebElement register;
 
+    @FindBy(name="username")
+    WebElement loginemail;
+
+    @FindBy(id="password")
+    WebElement loginpassword;
+
+    @FindBy (name="login")
+    WebElement loginbutton;
+
 
     private final WebDriverWait wait;
 
@@ -47,4 +56,18 @@ public class SignUpPage {
         register.click();
         }
 
+    public void setLoginPassword(String passwordtext) {
+
+        loginpassword.sendKeys(passwordtext);
+    }
+
+    public void setLoginEmail(String email) {
+
+        loginemail.sendKeys(email);
+    }
+
+    public void login() {
+
+        loginbutton.click();
+    }
 }
