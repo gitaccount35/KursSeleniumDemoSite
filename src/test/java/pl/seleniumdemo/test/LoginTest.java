@@ -23,7 +23,7 @@ public class LoginTest extends BaseTest  {
             signUpPage.login();
 
             ResultsSignUpPage resultsSignUpPage = new ResultsSignUpPage(driver);
-            Assert.assertTrue(resultsSignUpPage.getHeadingText().contains("My account"));
+            Assert.assertTrue(resultsSignUpPage.getDashBoard().getText().contains("Dashboard"));
             Thread.sleep(3000);
 
         }

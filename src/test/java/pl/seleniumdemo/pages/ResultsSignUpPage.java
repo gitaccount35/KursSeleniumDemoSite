@@ -12,8 +12,10 @@ import java.time.Duration;
 
 public class ResultsSignUpPage {
 
-    @FindBy (xpath= "//h1[@class='entry-title']")
+    @FindBy(xpath = "//h1[@class='entry-title']")
     WebElement heading;
+    @FindBy(xpath = "//a[text()='Dashboard']")
+    WebElement dashboard;
 
     private final WebDriverWait wait;
     private WebDriver driver;
@@ -28,5 +30,14 @@ public class ResultsSignUpPage {
     public String getHeadingText() {
         return heading.getText();
     }
-   }
+
+    public WebElement getDashBoard() {
+        return dashboard;
+    }
+
+}
+
+
+
+
 

@@ -30,6 +30,9 @@ public class SignUpPage {
     @FindBy (name="login")
     WebElement loginbutton;
 
+    @FindBy(xpath = "//ul[@class='woocommerce-error']//li")
+    WebElement errorMessage;
+
 
     private final WebDriverWait wait;
 
@@ -70,4 +73,8 @@ public class SignUpPage {
 
         loginbutton.click();
     }
+    public WebElement getErrorMessage() {
+        return errorMessage;
+    }
+
 }
