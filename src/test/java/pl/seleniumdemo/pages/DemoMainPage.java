@@ -17,6 +17,9 @@ public class DemoMainPage {
     @FindBy(xpath = "//span[text()= 'My account']")
     List<WebElement> myaccount;
 
+    @FindBy(xpath = "//span[text()= 'Shop']")
+    List<WebElement> shop;
+
 
 
     private final WebDriverWait wait;
@@ -36,5 +39,12 @@ public class DemoMainPage {
 
         myaccount.stream().filter(WebElement::isDisplayed)
                 .findFirst().ifPresent(WebElement::click);
+    }
+
+    public void gotoShop() {
+
+        shop.stream().filter(WebElement::isDisplayed)
+                .findFirst().ifPresent(WebElement::click);
+
     }
 }
