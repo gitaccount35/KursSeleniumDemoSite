@@ -1,15 +1,13 @@
 package pl.seleniumdemo.test;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import pl.seleniumdemo.pages.CartPage;
-import pl.seleniumdemo.pages.DemoMainPage;
-import pl.seleniumdemo.pages.SeleniumWebdrvPage;
-import pl.seleniumdemo.pages.ShopPage;
+import pl.seleniumdemo.pages.*;
 
 public class BuyingProductTest extends BaseTest {
 
     @Test
-    public void BuyingSelenium() throws InterruptedException {
+    public void BuyingProduct() throws InterruptedException {
 
         DemoMainPage demoMainPage = new DemoMainPage(driver);
         Thread.sleep(3000);
@@ -17,16 +15,32 @@ public class BuyingProductTest extends BaseTest {
         Thread.sleep(3000);
 
         ShopPage shopPage = new ShopPage(driver);
-        shopPage.gotoSelenium();
-        SeleniumWebdrvPage  seleniumWebdrvPage = new SeleniumWebdrvPage(driver);
-        seleniumWebdrvPage.addtoCart();
+        shopPage.gotoProductPage("Java Selenium WebDriver");
+        ProductPage productPage = new ProductPage(driver);
+        productPage.addtoCart();
         Thread.sleep(3000);
 
-        seleniumWebdrvPage.gotoCart();
+        productPage.gotoCart();
         Thread.sleep(3000);
 
         CartPage cartPage= new CartPage(driver);
         cartPage.checkout();
+        Thread.sleep(3000);
+
+        cartPage.setFirstName("Piotr");
+        cartPage.setLastName("Testowy");
+        cartPage.setAddress("Warszawska 17");
+        cartPage.setPostCode("00-100");
+        cartPage.setCity("Warszawa");
+        cartPage.setPhone("48500700800");
+        cartPage.setEmail("piotr_email1235@gmail.com");
+        Thread.sleep(3000);
+        cartPage.placeOrder();
+        Thread.sleep(5000);
+
+        OrdersPage ordersPage = new OrdersPage(driver);
+        Assert.assertTrue(ordersPage.getOrderSummary().getText()
+                .contains("Thank you. Your order has been received."));
         Thread.sleep(3000);
 
 

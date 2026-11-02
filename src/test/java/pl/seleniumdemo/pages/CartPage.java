@@ -15,6 +15,30 @@ public class CartPage {
     @FindBy(xpath = "//a[contains(text(),'Proceed to checkout')]")
     WebElement checkoutButton;
 
+    @FindBy(id = "billing_first_name")
+    WebElement firstName;
+
+    @FindBy(id="billing_last_name")
+    WebElement lastName;
+
+    @FindBy(id="billing_address_1")
+    WebElement address1;
+
+    @FindBy(id="billing_postcode")
+    WebElement postcode;
+
+    @FindBy(id="billing_city")
+    WebElement city;
+
+    @FindBy(id="billing_phone")
+    WebElement phone;
+
+    @FindBy(id="billing_email")
+    WebElement email;
+
+    @FindBy(id="place_order")
+    WebElement order;
+
     private final WebDriverWait wait;
     private WebDriver driver;
 
@@ -28,5 +52,37 @@ public class CartPage {
 
     public void checkout() {
         checkoutButton.click();
+    }
+
+    public void setFirstName(String firstNameValue) {
+        firstName.sendKeys(firstNameValue);
+    }
+
+    public void setLastName(String lastNameValue) {
+        lastName.sendKeys(lastNameValue);
+    }
+
+    public void setAddress(String addressValue) {
+        address1.sendKeys(addressValue);
+    }
+
+    public void setPostCode(String postCodeValue) {
+        postcode.sendKeys(postCodeValue);
+    }
+
+    public void setCity(String cityValue) {
+        city.sendKeys(cityValue);
+    }
+
+    public void setPhone(String number) {
+        phone.sendKeys(number);
+    }
+
+    public void setEmail(String mail) {
+        email.sendKeys(mail);
+    }
+
+    public void placeOrder() {
+        order.click();
     }
 }

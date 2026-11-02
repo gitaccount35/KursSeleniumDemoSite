@@ -9,33 +9,25 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
-public class SeleniumWebdrvPage {
+public class OrdersPage {
 
-    @FindBy(name = "add-to-cart")
-    WebElement addToCart;
-
-    @FindBy(xpath = "//span[text()= 'Cart']")
-    List<WebElement> cart;
-    
+    @FindBy(xpath = "//p[text()='Thank you. Your order has been received.']")
+    WebElement orderSummary;
 
     private final WebDriverWait wait;
     private WebDriver driver;
 
     private static final Logger logger = LogManager.getLogger();
 
-    public SeleniumWebdrvPage(WebDriver driver) {
+    public OrdersPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-    public void addtoCart() {
-        addToCart.click();
-    }
-    public void gotoCart() {
 
-        cart.stream().filter(WebElement::isDisplayed)
-                .findFirst().ifPresent(WebElement::click);
+    public WebElement getOrderSummary() {
+        return orderSummary;
+
     }
 }
