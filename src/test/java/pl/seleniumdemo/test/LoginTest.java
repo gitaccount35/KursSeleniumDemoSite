@@ -1,4 +1,5 @@
 package pl.seleniumdemo.test;
+import com.aventstack.extentreports.ExtentTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.seleniumdemo.pages.DemoMainPage;
@@ -10,6 +11,8 @@ public class LoginTest extends BaseTest  {
 
         @Test
         public void LoginTestFunction() throws InterruptedException {
+
+            ExtentTest test = extentReports.createTest("LoginTestFunction");
 
             DemoMainPage demoMainPage = new DemoMainPage(driver);
             Thread.sleep(3000);
@@ -29,6 +32,8 @@ public class LoginTest extends BaseTest  {
         }
     @Test
     public void LoginIncorrectPasswordTest() throws InterruptedException {
+
+        ExtentTest test = extentReports.createTest("LoginIncorrectPasswordTest");
 
         DemoMainPage demoMainPage = new DemoMainPage(driver);
         Thread.sleep(3000);

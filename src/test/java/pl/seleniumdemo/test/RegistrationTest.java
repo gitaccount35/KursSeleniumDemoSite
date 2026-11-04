@@ -1,5 +1,6 @@
 package pl.seleniumdemo.test;
 
+import com.aventstack.extentreports.ExtentTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.seleniumdemo.pages.DemoMainPage;
@@ -9,6 +10,8 @@ import pl.seleniumdemo.pages.SignUpPage;
 public class RegistrationTest extends BaseTest {
     @Test
     public void registrationOnSiteTest() throws InterruptedException {
+
+        ExtentTest test = extentReports.createTest("registrationOnSiteTest");
 
         DemoMainPage demoMainPage = new DemoMainPage(driver);
         Thread.sleep(3000);
@@ -30,6 +33,8 @@ public class RegistrationTest extends BaseTest {
 
     @Test
     public void registExistingUserOnSiteTest() throws InterruptedException {
+
+        ExtentTest test = extentReports.createTest("registExistingUserOnSiteTest");
 
         DemoMainPage demoMainPage = new DemoMainPage(driver);
         Thread.sleep(3000);

@@ -1,5 +1,6 @@
 package pl.seleniumdemo.test;
 
+import com.aventstack.extentreports.ExtentTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.seleniumdemo.models.Customer;
@@ -9,6 +10,8 @@ public class BuyingProductTest extends BaseTest {
 
     @Test
     public void BuyingProduct() throws InterruptedException {
+
+        ExtentTest test = extentReports.createTest("BuyingProduct");
 
         DemoMainPage demoMainPage = new DemoMainPage(driver);
         Thread.sleep(3000);
