@@ -6,7 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pl.seleniumdemo.models.Customer;
 
 import java.time.Duration;
 
@@ -39,6 +41,9 @@ public class CartPage {
     @FindBy(id="place_order")
     WebElement order;
 
+    @FindBy(id="billing_country")
+    WebElement country;
+
     private final WebDriverWait wait;
     private WebDriver driver;
 
@@ -54,33 +59,21 @@ public class CartPage {
         checkoutButton.click();
     }
 
-    public void setFirstName(String firstNameValue) {
-        firstName.sendKeys(firstNameValue);
+    public void setCustData(Customer customer){
+
+        firstName.sendKeys(customer.getFirstName());
+        lastName.sendKeys(customer.getLastName());
+        address1.sendKeys(customer.getAddress());
+        postcode.sendKeys(customer.getPostcode());
+        city.sendKeys(customer.getCity());
+        phone.sendKeys(customer.getPhone());
+        email.sendKeys(customer.getEmail());
+
+        Select countrySelect = new Select(country);
+        countrySelect.selectByVisibleText(customer.getCountry());
+
     }
 
-    public void setLastName(String lastNameValue) {
-        lastName.sendKeys(lastNameValue);
-    }
-
-    public void setAddress(String addressValue) {
-        address1.sendKeys(addressValue);
-    }
-
-    public void setPostCode(String postCodeValue) {
-        postcode.sendKeys(postCodeValue);
-    }
-
-    public void setCity(String cityValue) {
-        city.sendKeys(cityValue);
-    }
-
-    public void setPhone(String number) {
-        phone.sendKeys(number);
-    }
-
-    public void setEmail(String mail) {
-        email.sendKeys(mail);
-    }
 
     public void placeOrder() {
         order.click();

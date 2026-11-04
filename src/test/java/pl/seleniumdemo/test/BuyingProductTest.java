@@ -2,6 +2,7 @@ package pl.seleniumdemo.test;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pl.seleniumdemo.models.Customer;
 import pl.seleniumdemo.pages.*;
 
 public class BuyingProductTest extends BaseTest {
@@ -27,13 +28,9 @@ public class BuyingProductTest extends BaseTest {
         cartPage.checkout();
         Thread.sleep(3000);
 
-        cartPage.setFirstName("Piotr");
-        cartPage.setLastName("Testowy");
-        cartPage.setAddress("Warszawska 17");
-        cartPage.setPostCode("00-100");
-        cartPage.setCity("Warszawa");
-        cartPage.setPhone("48500700800");
-        cartPage.setEmail("piotr_email1235@gmail.com");
+        Customer  customer = new Customer();
+        cartPage.setCustData(customer);
+
         Thread.sleep(3000);
         cartPage.placeOrder();
         Thread.sleep(5000);
