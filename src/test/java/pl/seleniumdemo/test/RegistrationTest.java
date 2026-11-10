@@ -10,7 +10,7 @@ import pl.seleniumdemo.pages.SignUpPage;
 
 public class RegistrationTest extends BaseTest {
     @Test
-    public void registrationOnSiteTest() throws InterruptedException {
+    public void registrationOnSiteTest() {
 
         ExtentTest test = extentReports.createTest("registrationOnSiteTest");
 
@@ -47,7 +47,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test
-    public void registExistingUserOnSiteTest() throws InterruptedException {
+    public void registExistingUserOnSiteTest()  {
 
         ExtentTest test = extentReports.createTest("registExistingUserOnSiteTest");
 

@@ -14,7 +14,7 @@ import java.time.Duration;
 public class LoginTest extends BaseTest  {
 
         @Test
-        public void LoginTestFunction() throws InterruptedException {
+        public void LoginTestFunction() {
 
             ExtentTest test = extentReports.createTest("LoginTestFunction");
             //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

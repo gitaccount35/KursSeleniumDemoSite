@@ -10,7 +10,7 @@ import pl.seleniumdemo.pages.*;
 public class BuyingProductTest extends BaseTest {
 
     @Test
-    public void BuyingProduct() throws InterruptedException {
+    public void BuyingProduct() {
 
         ExtentTest test = extentReports.createTest("BuyingProduct");
         Customer  customer = new Customer();
