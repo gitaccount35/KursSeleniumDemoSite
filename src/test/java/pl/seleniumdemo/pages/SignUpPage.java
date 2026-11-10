@@ -47,33 +47,51 @@ public class SignUpPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public void setEmail(String emailtext) {
+    public SignUpPage setEmail(String emailtext) {
         email.sendKeys(emailtext);
+        return this;
         }
 
-    public void setPassword(String passwordtext) {
+    public SignUpPage setPassword(String passwordtext) {
         password.sendKeys(passwordtext);
+        return this;
         }
 
-    public void registration(){
-
+    public ResultsSignUpPage registration(){
         register.click();
+        return new ResultsSignUpPage(driver);
         }
 
-    public void setLoginPassword(String passwordtext) {
+    public SignUpPage registrationExisting(){
+        register.click();
+        return this;
+    }
+
+    public SignUpPage setLoginPassword(String passwordtext) {
 
         loginpassword.sendKeys(passwordtext);
+        return this;
     }
 
-    public void setLoginEmail(String email) {
+    public SignUpPage setLoginEmail(String email) {
 
         loginemail.sendKeys(email);
+        return new SignUpPage(driver);
     }
 
-    public void login() {
+    public ResultsSignUpPage login() {
 
         loginbutton.click();
+        return new ResultsSignUpPage(driver);
     }
+    public SignUpPage loginInvalid() {
+
+        loginbutton.click();
+        return this;
+    }
+
+
+
     public WebElement getErrorMessage() {
 
         SeleniumHelper.waitforVisible(errorMessage, driver);

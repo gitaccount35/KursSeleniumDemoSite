@@ -55,11 +55,12 @@ public class CartPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public void checkout() {
+    public CartPage checkout() {
         checkoutButton.click();
-    }
+        return this;
+        }
 
-    public void setCustData(Customer customer){
+    public CartPage setCustData(Customer customer){
 
         firstName.sendKeys(customer.getFirstName());
         lastName.sendKeys(customer.getLastName());
@@ -72,10 +73,13 @@ public class CartPage {
         Select countrySelect = new Select(country);
         countrySelect.selectByVisibleText(customer.getCountry());
 
+        return this;
     }
 
 
-    public void placeOrder() {
+    public OrdersPage placeOrder() {
         order.click();
+    return new OrdersPage(driver);
     }
 }
+

@@ -1,6 +1,8 @@
 package pl.seleniumdemo.test;
 import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pl.seleniumdemo.pages.DemoMainPage;
 import pl.seleniumdemo.pages.ResultsSignUpPage;
@@ -17,6 +19,15 @@ public class LoginTest extends BaseTest  {
             ExtentTest test = extentReports.createTest("LoginTestFunction");
             //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
+            //DemoMainPage demoMainPage = new DemoMainPage(driver);
+            WebElement dashboard = new DemoMainPage(driver)
+                    .setMyAccount()
+                    .setLoginEmail("piotr_email1237@gmail.com")
+                    .setLoginPassword("1234567890AbCdEfGh!@")
+                    .login()
+                    .getDashBoard();
+
+            /*
             DemoMainPage demoMainPage = new DemoMainPage(driver);
             //Thread.sleep(3000);
             demoMainPage.setMyAccount();
@@ -29,7 +40,9 @@ public class LoginTest extends BaseTest  {
             signUpPage.login();
 
             ResultsSignUpPage resultsSignUpPage = new ResultsSignUpPage(driver);
-            Assert.assertTrue(resultsSignUpPage.getDashBoard().getText().contains("Dashboard"));
+            */
+
+            Assert.assertTrue(dashboard.getText().contains("Dashboard"));
             //Thread.sleep(3000);
 
         }
@@ -38,6 +51,13 @@ public class LoginTest extends BaseTest  {
 
         ExtentTest test = extentReports.createTest("LoginIncorrectPasswordTest");
 
+        WebElement error = new DemoMainPage(driver)
+                .setMyAccount()
+                .setLoginEmail("piotr_email1235@gmail.com")
+                .setLoginPassword("1234567890AbCdEf")
+                .loginInvalid().getErrorMessage();
+
+        /*
         DemoMainPage demoMainPage = new DemoMainPage(driver);
         //Thread.sleep(3000);
         demoMainPage.setMyAccount();
@@ -48,8 +68,9 @@ public class LoginTest extends BaseTest  {
         signUpPage.setLoginPassword("1234567890AbCdEf");
         //Thread.sleep(3000);
         signUpPage.login();
+        */
 
-        Assert.assertTrue(signUpPage.getErrorMessage().getText()
+        Assert.assertTrue(error.getText()
                 .contains("Incorrect username or password"));
         //Thread.sleep(3000);
     }

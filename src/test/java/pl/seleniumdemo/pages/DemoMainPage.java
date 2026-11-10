@@ -35,16 +35,17 @@ public class DemoMainPage {
     }
 
 
-    public void setMyAccount() {
-
+    public SignUpPage setMyAccount() {
         myaccount.stream().filter(WebElement::isDisplayed)
                 .findFirst().ifPresent(WebElement::click);
+        return new SignUpPage(driver);
     }
 
-    public void gotoShop() {
+    public ShopPage gotoShop() {
 
         shop.stream().filter(WebElement::isDisplayed)
                 .findFirst().ifPresent(WebElement::click);
 
+        return new ShopPage(driver);
     }
 }

@@ -28,12 +28,12 @@ public class ShopPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public void gotoProductPage(String title) {
+    public ProductPage gotoProductPage(String title) {
 
             By xpath= By.xpath("//h2[text()= '" + title +"']");
             SeleniumHelper.waitforVisible(xpath, driver);
             driver.findElement(xpath).click();
             //selenium.click();
-
+            return  new ProductPage(driver);
     }
 }

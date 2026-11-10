@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pl.seleniumdemo.utils.SeleniumHelper;
 
 import java.time.Duration;
 import java.util.List;
@@ -30,12 +31,18 @@ public class ProductPage {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-    public void addtoCart() {
+
+    public ProductPage addtoCart() {
         addToCart.click();
+        return this;
     }
-    public void gotoCart() {
+
+    public CartPage gotoCart() {
+
+        //SeleniumHelper.waitforVisible((WebElement) cart, driver);
 
         cart.stream().filter(WebElement::isDisplayed)
                 .findFirst().ifPresent(WebElement::click);
+    return new CartPage(driver);
     }
 }

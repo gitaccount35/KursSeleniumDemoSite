@@ -1,6 +1,7 @@
 package pl.seleniumdemo.test;
 
 import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.seleniumdemo.models.Customer;
@@ -12,7 +13,19 @@ public class BuyingProductTest extends BaseTest {
     public void BuyingProduct() throws InterruptedException {
 
         ExtentTest test = extentReports.createTest("BuyingProduct");
+        Customer  customer = new Customer();
 
+        WebElement order = new DemoMainPage(driver)
+                .gotoShop()
+                .gotoProductPage("Java Selenium WebDriver")
+                .addtoCart()
+                .gotoCart()
+                .checkout()
+                .setCustData(customer)
+                .placeOrder()
+                .getOrderSummary();
+
+        /*
         DemoMainPage demoMainPage = new DemoMainPage(driver);
        // Thread.sleep(3000);
         demoMainPage.gotoShop();
@@ -31,15 +44,16 @@ public class BuyingProductTest extends BaseTest {
         cartPage.checkout();
         //Thread.sleep(3000);
 
-        Customer  customer = new Customer();
+        Customer customer = new Customer();
         cartPage.setCustData(customer);
 
         //Thread.sleep(3000);
         cartPage.placeOrder();
         //Thread.sleep(5000);
-
         OrdersPage ordersPage = new OrdersPage(driver);
-        Assert.assertTrue(ordersPage.getOrderSummary().getText()
+         */
+
+        Assert.assertTrue(order.getText()
                 .contains("Thank you. Your order has been received."));
         //Thread.sleep(3000);
 
