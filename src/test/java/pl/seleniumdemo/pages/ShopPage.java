@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pl.seleniumdemo.utils.SeleniumHelper;
 
 import java.time.Duration;
 
@@ -29,8 +30,9 @@ public class ShopPage {
 
     public void gotoProductPage(String title) {
 
-            driver.findElement
-                    (By.xpath("//h2[text()= '" + title +"']")).click();
+            By xpath= By.xpath("//h2[text()= '" + title +"']");
+            SeleniumHelper.waitforVisible(xpath, driver);
+            driver.findElement(xpath).click();
             //selenium.click();
 
     }

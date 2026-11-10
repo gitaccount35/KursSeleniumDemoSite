@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pl.seleniumdemo.utils.SeleniumHelper;
 
 import java.time.Duration;
 
@@ -27,6 +28,8 @@ public class OrdersPage {
     }
 
     public WebElement getOrderSummary() {
+
+        SeleniumHelper.waitforVisible(orderSummary, driver);
         return orderSummary;
 
     }

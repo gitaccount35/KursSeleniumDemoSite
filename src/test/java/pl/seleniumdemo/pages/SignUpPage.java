@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pl.seleniumdemo.utils.SeleniumHelper;
 
 import java.time.Duration;
 
@@ -74,6 +75,8 @@ public class SignUpPage {
         loginbutton.click();
     }
     public WebElement getErrorMessage() {
+
+        SeleniumHelper.waitforVisible(errorMessage, driver);
         return errorMessage;
     }
 
