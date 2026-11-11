@@ -5,8 +5,6 @@ import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pl.seleniumdemo.pages.DemoMainPage;
-import pl.seleniumdemo.pages.ResultsSignUpPage;
-import pl.seleniumdemo.pages.SignUpPage;
 
 import java.time.Duration;
 
@@ -22,7 +20,7 @@ public class LoginTest extends BaseTest  {
             //DemoMainPage demoMainPage = new DemoMainPage(driver);
             WebElement dashboard = new DemoMainPage(driver)
                     .setMyAccount()
-                    .setLoginEmail("piotr_email1237@gmail.com")
+                    .setLoginEmail("piotr_email1238@gmail.com")
                     .setLoginPassword("1234567890AbCdEfGh!@")
                     .login()
                     .getDashBoard();

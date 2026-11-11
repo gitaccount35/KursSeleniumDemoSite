@@ -1,12 +1,10 @@
 package pl.seleniumdemo.test;
-
 import com.aventstack.extentreports.ExtentTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.seleniumdemo.pages.DemoMainPage;
-import pl.seleniumdemo.pages.ResultsSignUpPage;
-import pl.seleniumdemo.pages.SignUpPage;
+
 
 public class RegistrationTest extends BaseTest {
     @Test

@@ -39,7 +39,7 @@ public class ProductPage {
 
     public CartPage gotoCart() {
 
-        //SeleniumHelper.waitforVisible((WebElement) cart, driver);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         cart.stream().filter(WebElement::isDisplayed)
                 .findFirst().ifPresent(WebElement::click);

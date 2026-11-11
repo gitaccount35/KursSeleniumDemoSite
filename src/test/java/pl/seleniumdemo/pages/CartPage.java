@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pl.seleniumdemo.models.Customer;
+import pl.seleniumdemo.utils.SeleniumHelper;
 
 import java.time.Duration;
 
@@ -56,6 +57,8 @@ public class CartPage {
     }
 
     public CartPage checkout() {
+
+        SeleniumHelper.waitforVisible(checkoutButton, driver);
         checkoutButton.click();
         return this;
         }
